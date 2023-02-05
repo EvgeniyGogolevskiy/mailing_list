@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from mailing_list_project.settings import BASE_DIR
 from .forms import ChoiceForm
 from .tasks import send_list
 
@@ -20,7 +19,6 @@ def index(request):
         return render(request, 'index.html', {'form': form})
     else:
         form = ChoiceForm()
-        print(BASE_DIR)
         return render(request, 'index.html', {'form': form})
 
 
