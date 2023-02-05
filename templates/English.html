@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>English</title>
+</head>
+<body>
+
+Hello {{name}} {{last_name}}!
+Your birthday is {{birthday}}
+you subscribed to the newsletter in {{language}}
+
+<img src="{% static 'http://127.0.0.1:8000/static/main/white.jpg' %}" width="100px" height="100px" border="1"/>
+</body>
+</html>
