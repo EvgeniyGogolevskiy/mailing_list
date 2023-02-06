@@ -3,9 +3,12 @@ from __future__ import unicode_literals
 
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views import View
 
 from .forms import ChoiceForm
 from .tasks import send_list
+
+import os.path
 
 
 def index(request):
@@ -22,6 +25,10 @@ def index(request):
         return render(request, 'index.html', {'form': form})
 
 
-def tracking(request):
-    print('OK')
-    return HttpResponse('hello OK')
+class PixelView(View):
+
+    def get(self, request, *args, **kwargs):
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        image_data = open(os.path.join(script_dir, 'static/main/white.jpg'), 'rb').read()
+        print('OK')
+        return HttpResponse(image_data, content_type="image/png")
